@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function () {
+export default function About () {
 
     const[myStyle , setmyStyle] = useState({
         color : 'white',

@@ -4,20 +4,24 @@ export default function Textform (props) {
   const removeSpace = () =>{
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "))
+    props.showAlert("Spaces removed", "success")
   }
   const magic = () =>{
     let newText = "";
     setText(newText)
+    props.showAlert("Clear", "success")
   }
   
   const clickFunc2lower = () =>{
     let newText = text.toLowerCase();
     setText(newText)
+    props.showAlert("Converted to Lowercase", "success")
   }
   const clickFunc = () =>{
     console.log("uppercase " + text)
     let newText = text.toUpperCase();
     setText(newText)
+    props.showAlert("Converted to Uppercase", "success")
   }
   const handleChange = (event) =>{
     console.log("on change ")
@@ -42,8 +46,8 @@ export default function Textform (props) {
     </div>
     <div className="container my-3" style={{color : props.mode==='dark'?'white':'black'}}>
       <h1>Summary</h1>
-      <p>{text.split(" ").length-1} words {text.length} characters</p>
-      <b><p>{0.008 * (text.split(" ").length)} minutes read</p></b>
+      <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+      <p>{0.008 *  text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Minutes read</p>
       <h2>Preview</h2>
       <p>{text.length > 0?text:"Enter text to preview"}</p>
     </div>
